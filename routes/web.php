@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MajorController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::resource('mahasiswas', MahasiswaController::class);
+Route::resource('students', StudentController::class);
+Route::get('/majors/count', [MajorController::class, 'count'])->name('majors.count');
+Route::resource('majors', MajorController::class);
+
+Route::get('/dashboard', function(){
+    return view('homes.dashboard');
+})->name('homes.dashboard');
